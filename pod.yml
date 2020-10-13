@@ -30,3 +30,7 @@ spec:
         valueFrom:
          fieldRef:
             fieldPath: metadata.name
+      - name: MACKEREL_KUBERNETES_NODE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
