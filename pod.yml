@@ -5,6 +5,7 @@ metadata:
   labels:
     app: agent
 spec:
+  serviceAccountName: mackerel-container-agent-sa
   containers:
   - name: mackerel-container-agent
     image: mackerel/mackerel-container-agent:latest
