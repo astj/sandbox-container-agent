@@ -8,7 +8,7 @@ spec:
   serviceAccountName: mackerel-container-agent-sa
   containers:
   - name: mackerel-container-agent
-    image: mackerel/mackerel-container-agent:local
+    image: ${IMAGE_NAME}
     imagePullPolicy: Never
     resources:
       limits:
