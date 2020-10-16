@@ -13,6 +13,9 @@ spec:
     resources:
       limits:
         memory: 128Mi
+        cpu: 3
+      requests:
+        cpu: 2
     env:
       - name: MACKEREL_CONTAINER_PLATFORM
         value: kubernetes
