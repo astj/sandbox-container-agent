@@ -7,6 +7,9 @@ metadata:
 spec:
   serviceAccountName: mackerel-container-agent-sa
   containers:
+  - name: nginx
+    image: nginx:1.17-alpine
+    imagePullPolicy: Never
   - name: mackerel-container-agent
     image: ${IMAGE_NAME}
     imagePullPolicy: Never
