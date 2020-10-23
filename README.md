@@ -14,3 +14,8 @@ ekstl
 export AWS_PROFILE=...
 eksctl create cluster -f eksctl.yml
 ```
+
+You might need some hacks when MFA enabled for AWS:
+```
+FILE=$(mktemp); cat pod_eks.yml | envsubst > $FILE; kubectl apply -f $FILE; rm $FILE
+```
