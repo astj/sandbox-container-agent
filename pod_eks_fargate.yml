@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: agent
+  labels:
+    app: agent
+spec:
+  serviceAccountName: mackerel-container-agent-sa
+  containers:
+  - name: mackerel-container-agent
+    image: ${IMAGE_NAME}
+    imagePullPolicy: Always
+    resources:
+      limits:
+        memory: 128Mi
+    env:
+      - name: MACKEREL_CONTAINER_PLATFORM
+        value: eks_fargate
+      - name: MACKEREL_APIKEY
+        value: ${MACKEREL_APIKEY}
+      - name: MACKEREL_KUBERNETES_NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: MACKEREL_KUBERNETES_POD_NAME
+        valueFrom:
+         fieldRef:
+            fieldPath: metadata.name
+      - name: MACKEREL_KUBERNETES_NODE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
