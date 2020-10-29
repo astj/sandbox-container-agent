@@ -23,7 +23,10 @@ spec:
       - name: MACKEREL_CONTAINER_PLATFORM
         value: kubernetes
       - name: MACKEREL_APIKEY
-        value: ${MACKEREL_APIKEY}
+        valueFrom:
+          secretKeyRef:
+            name: mackerel-container-agent
+            key: MACKEREL_APIKEY
       - name: MACKEREL_KUBERNETES_KUBELET_HOST
         valueFrom:
           fieldRef:

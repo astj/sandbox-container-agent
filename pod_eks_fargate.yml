@@ -17,7 +17,10 @@ spec:
       - name: MACKEREL_CONTAINER_PLATFORM
         value: eks_fargate
       - name: MACKEREL_APIKEY
-        value: ${MACKEREL_APIKEY}
+        valueFrom:
+          secretKeyRef:
+            name: mackerel-container-agent
+            key: MACKEREL_APIKEY
       - name: MACKEREL_KUBERNETES_NAMESPACE
         valueFrom:
           fieldRef:

@@ -1,9 +1,15 @@
 # sandbox
 
-deploy
+secret
 
 ```
 export MACKEREL_APIKEY=...
+kubectl create secret generic mackerel-container-agent --from-literal "MACKEREL_APIKEY=${MACKEREL_APIKEY}"
+```
+
+deploy
+
+```
 export IMAGE_NAME=mackerel/mackerel-container-agent:latest
 cat pod.yml | envsubst | kubectl apply -f -
 ```
